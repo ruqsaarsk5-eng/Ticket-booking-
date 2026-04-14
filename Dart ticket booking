@@ -1,0 +1,41 @@
+import 'dart:io';
+
+void main() {
+  int totalTickets = 50;
+  int pricePerTicket = 100;
+
+  print("🎟️ Welcome to Ticket Counter");
+
+  // User name input
+  stdout.write("Enter your name: ");
+  String name = stdin.readLineSync()!;
+
+  // Ticket input
+  stdout.write("Enter number of tickets you want: ");
+  int? tickets = int.tryParse(stdin.readLineSync()!);
+
+  if (tickets == null || tickets <= 0) {
+    print("❌ Invalid number of tickets!");
+    return;
+  }
+
+  if (tickets > totalTickets) {
+    print("❌ Only $totalTickets tickets available!");
+    return;
+  }
+
+  // Price calculation
+  int totalAmount = tickets * pricePerTicket;
+  totalTickets -= tickets;
+
+  // Receipt
+  print("\n🧾 -------- RECEIPT --------");
+  print("Name: $name");
+  print("Tickets Booked: $tickets");
+  print("Price per Ticket: ₹$pricePerTicket");
+  print("Total Amount: ₹$totalAmount");
+  print("Remaining Tickets: $totalTickets");
+  print("----------------------------");
+
+  print("✅ Booking Successful!");
+}
